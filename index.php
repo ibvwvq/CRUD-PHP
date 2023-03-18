@@ -7,61 +7,59 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="main">
-        <form action="insert.php" method="POST" enctype='multipart/form-data'>
-            <label for="">Name:</label> <br>
-            <input type="text" name = "Name"><br>
-            <label for="">Price:</label> <br>
-            <input type="number" name="Price"><br>
-            <label for="">Image:</label> <br>
-            <input type="file" name="Image"><br>
-
-            <button name="upload" class="btn-upload" >Upload</button>
-        </form>
-    </div>
-
-
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Edit</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <?
-    
-        include 'config.php';
-        $iton = mysqli_query($connect,"SELECT * FROM `card`");
-        while ($row = mysqli_fetch_array($iton)){
-            echo "
-            <tr>
-                <td>$row[Id]</td>
-                <td>$row[Name]</td>
-                <td>$row[Price]</td>
-                <td>
-                    <img src='$row[Image]' width='400' height='222'>
-                </td>
-                <td>
-                        <a href='delete.php? Id= $row[Id]' class = 'btn btn-danger'>Delete</a>
-                </td>
-                <td>
-                <button type='submit'>Edit</button>
-                </td>
-
-            </tr>";
-
-        }
-    
-    
-    ?>
-  </tbody>
-</table>
+  <div class="container">
+      <div class="main">
+          <form action="insert.php" method="POST" enctype='multipart/form-data'>
+              <label for="">Name:</label> <br>
+              <input type="text" name = "Name"><br>
+              <label for="">Price:</label> <br>
+              <input type="number" name="Price"><br>
+              <label for="">Image:</label> <br>
+              <input type="file" name="Image"><br>
+  
+              <button name="upload" class="btn-upload" >Upload</button>
+          </form>
+          
+          
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <?
+      
+          include 'config.php';
+          $iton = mysqli_query($connect,"SELECT * FROM `card`");
+          while ($row = mysqli_fetch_array($iton)){
+              echo "
+              <tr>
+                  <td>$row[Name]</td>
+                  <td>$row[Price]</td>
+                  <td>
+                      <img src='$row[Image]' width='400' height='222'>
+                  </td>
+                  <td>
+                          <a href='delete.php? Id= $row[Id]' class = 'btn btn-danger'>Delete</a>
+                  </td>
+                  <td>
+                          <a href='edit.php? Id= $row[Id]' class = 'btn btn-danger'>Edit</a>
+                  </td>
+  
+              </tr>";
+  
+          }
+      ?>
+    </tbody>
+  </table>
+  </div>
+  </div>
 
 
 </body>

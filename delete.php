@@ -3,7 +3,10 @@
 
     include 'config.php';
 
-   echo $ID = $_GET['Id'];
+  $ID = $_GET['Id'];
 
+   mysqli_query($connect, "DELETE FROM `card` WHERE Id = $ID");
+
+   header('Location: index.php');
 
 ?>
